@@ -1,0 +1,16 @@
+<form>
+  <div class="bar">
+    <!-- Create a binding between the searchString model and the text field -->
+    <input type="text" name="first" [(ngModel)]="searchString" (ngModelChange)="filterName()" class="form-control" placeholder="Enter your search terms"/>
+  </div>
+  <ul>
+    <!-- Render a li element for every entry in the computed
+    filteredArticles array. -->
+    <li *ngFor="let item of articles_array">
+      <a href="{{ item.url }}">
+        <img src="{{ item.image }}" alt="{{ item.title }}}"/>
+      </a>
+      <p>{{ item.title }}</p>
+    </li>
+  </ul>
+</form>
