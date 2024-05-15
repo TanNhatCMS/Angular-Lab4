@@ -12,7 +12,7 @@ import {NavComponent} from "./nav/nav.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Lab3';
+  title = 'Lab4';
   namht = new Date().getFullYear();
   constructor(private router: Router) {}
 }
