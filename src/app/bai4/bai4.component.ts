@@ -9,5 +9,5 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './bai4.component.html'
 })
 export class Bai4Component {
- 
+
 }
