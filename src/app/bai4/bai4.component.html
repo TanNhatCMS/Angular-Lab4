@@ -1,0 +1,41 @@
+<form class="mt-3">
+  <div class="form-group">
+    <select [(ngModel)]="filter" name="price" class="form-control" (change)="filterProducts()"
+        style="max-width: 200px;" >
+      <option [ngValue]="undefined" selected>Mức giá</option>
+      <option value="199">Dưới 200</option>
+      <option value="200">Từ 200-500</option>
+      <option value="501">Trên 500</option>
+    </select>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col"><input type="checkbox" class="form-check-input" (change)="toggleSelectAll($event)"></th>
+        <th scope="col">Hàng hóa</th>
+        <th scope="col">Đơn giá</th>
+        <th scope="col">Số lượng</th>
+        <th scope="col">Thành tiền</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of filterprice(); let i = index">
+        <td><input type="checkbox" name="chon" class="form-check-input" [checked]="selectedProducts[item.hanghoa]"
+                   (change)="onCheckboxChange(item, $event)"></td>
+        <td>{{ item.hanghoa }}</td>
+        <td>{{ item.dongia }}</td>
+        <td><input value="0" type="number" name="soluong" class="form-control quantity-input" [(ngModel)]="soluong[i]"
+                   (input)="onQuantityChange(i, $event)" min="0"></td>
+        <td>${{ item.dongia * (soluong[i] || 0)| number: '1.2-2' }}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="4" class="text-right">Tổng tiền</td>
+        <td>${{ tongtien| number: '1.2-2' }}</td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</form>
